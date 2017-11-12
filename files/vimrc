@@ -1,0 +1,87 @@
+" ================ General Config ====================
+
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread "Reload files changed outside vim
+
+" Vundle config
+ set nocompatible               " be iMproved
+ filetype off                   " required!
+
+ set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+
+ " let Vundle manage Vundle
+ " required!
+ Plugin 'gmarik/Vundle.vim'
+ " A tree file explore plugin
+ Plugin 'scrooloose/nerdtree'
+ " Syntax checking plugin
+ Plugin 'scrooloose/syntastic'
+ " Ruby plugin
+ Plugin 'vim-ruby/vim-ruby'
+ " Ruby rspec plugin
+ Plugin 'thoughtbot/vim-rspec'
+ " Autoclose in code  pulugin
+ Plugin 'Townk/vim-autoclose'
+ Plugin 'tpope/vim-endwise'
+ Plugin 'flazz/vim-colorschemes'
+
+" All of your Plugins must be added before the following line
+ call vundle#end()            " required
+ filetype plugin indent on    " required
+" Vundle config end
+
+syntax on
+set hidden
+
+""Auto completion:
+"" type word!+TAB
+iab rb! #! /usr/bin/env ruby
+iab utf! # -*- coding: UTF-8 -*-
+iab py! #! /usr/bin/env python
+iab ifmain! if __name__ == "__main__":<CR>
+
+""Show whitespaces and tabs
+set listchars=tab:>-,trail:-
+set list
+
+""Disable Enable autoindent mode for paste text from clipboard
+nnoremap <F1> :set invpaste paste?<CR>
+set pastetoggle=<F1>
+set showmode
+""remap completion to Ctrl+Space
+inoremap <C-@> <C-x><C-o>
+
+"remap NERDTree to F2
+map <F2> :NERDTreeToggle<CR>
+" Disable ugly arrow
+let NERDTreeDirArrows=0
+"" Execute current file
+nnoremap <F9> :!%:p<CR>
+
+""Set space for different language
+"ruby
+autocmd FileType ruby compiler ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+runtime macros/matchit.vim
+
+" 256 color
+set t_Co=256
+colorscheme 256-grayvim
+
+"Spell Check
+set spell
+
+set nobackup
+"set noswapfile
+
+""set clipboard=unnamedplus

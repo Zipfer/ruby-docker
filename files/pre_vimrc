@@ -1,0 +1,40 @@
+" ================ General Config ====================
+
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread "Reload files changed outside vim
+
+" Vundle config
+ set nocompatible               " be iMproved
+ filetype off                   " required!
+
+ set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+
+ " let Vundle manage Vundle
+ " required!
+ Plugin 'gmarik/Vundle.vim'
+ " A tree file explore plugin
+ Plugin 'scrooloose/nerdtree'
+ " Syntax checking plugin
+ Plugin 'scrooloose/syntastic'
+ " Ruby plugin
+ Plugin 'vim-ruby/vim-ruby'
+ " Ruby rspec plugin
+ Plugin 'thoughtbot/vim-rspec'
+ " Autoclose in code  pulugin
+ Plugin 'Townk/vim-autoclose'
+ Plugin 'tpope/vim-endwise'
+ Plugin 'flazz/vim-colorschemes'
+
+" All of your Plugins must be added before the following line
+ call vundle#end()            " required
+ filetype plugin indent on    " required
+" Vundle config end
+
+syntax on
